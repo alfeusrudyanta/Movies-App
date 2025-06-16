@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+body {
+  background-color: black;
+}
+
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
