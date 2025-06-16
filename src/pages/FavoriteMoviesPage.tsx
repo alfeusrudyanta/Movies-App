@@ -39,7 +39,7 @@ const FavoriteMoviesPage: React.FC = () => {
   }
 
   return (
-    <div className='mt-[64px] md:mt-[90px] mx-4 md:mx-[140px] flex flex-col'>
+    <div className='mt-[64px] md:mt-[154px] mx-4 md:mx-[140px] flex flex-col'>
       <h1 className='font-bold text-[24px] md:text-[36px] leading-[36px] md:leading-[48px] text-[#FDFDFD] mb-6'>
         Favorites
       </h1>
