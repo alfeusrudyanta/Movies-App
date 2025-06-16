@@ -7,6 +7,7 @@ import iconStar from '../assets/icons/icon-star.svg';
 import Button from '../components/ui/Button';
 import HeartIcon from '../components/ui/HeartIcon';
 import NotFountPage from './NotFountPage';
+import bgWhite from '../assets/icons/bg-white.jpg';
 
 const SearchPage: React.FC = () => {
   const location = useLocation();
@@ -55,7 +56,11 @@ const SearchPage: React.FC = () => {
                 <div className='flex-shrink-0 max-h-[156px] md:max-h-[270px] max-w-[104px] md:max-w-[182px] overflow-hidden border border-transparent rounded-[8px]'>
                   <Link to={`/movie/${movie.id}`}>
                     <img
-                      src={getImageUrl(movie.poster_path)}
+                      src={
+                        movie.poster_path
+                          ? getImageUrl(movie.poster_path)
+                          : bgWhite
+                      }
                       alt={movie.title}
                       className='w-full h-fit hover:transform hover:scale-105 transition-transform duration-300'
                       loading='lazy'

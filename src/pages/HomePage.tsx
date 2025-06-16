@@ -7,6 +7,7 @@ import useResponsiveToggle from '../hooks/useResponsiveToggle';
 import { Link } from 'react-router-dom';
 import MoviesCard from '../components/MoviesCard';
 import iconSlider from '../assets/icons/icon-slider-arrow.svg';
+import bgWhite from '../assets/icons/bg-white.jpg';
 
 const HomePage: React.FC = () => {
   const [trendingMovies, setTrendingMovies] = useState<TrendingMovies | null>(
@@ -94,7 +95,11 @@ const HomePage: React.FC = () => {
       <div className='relative'>
         <div className='max-h-[810px] overflow-hidden min-h-[450px] md:min-h-[530px]'>
           <img
-            src={getImageUrl(featuredMovie.backdrop_path)}
+            src={
+              featuredMovie.backdrop_path
+                ? getImageUrl(featuredMovie.backdrop_path)
+                : bgWhite
+            }
             alt={featuredMovie.title}
             className='w-full h-full object-cover min-h-[400px] md:min-h-[610px]'
             loading='lazy'

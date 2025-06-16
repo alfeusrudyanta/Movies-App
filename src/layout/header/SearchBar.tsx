@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import useResponsiveToggle from '../../hooks/useResponsiveToggle';
+import iconSearch from '../../assets/icons/icon-search.svg';
+import leftArrow from '../../assets/icons/icon-left-arrow.svg';
 
 const SearchBar: React.FC = () => {
   const { isOpen, setIsOpen, windowWidth } = useResponsiveToggle();
@@ -35,7 +37,7 @@ const SearchBar: React.FC = () => {
     return (
       <div>
         <img
-          src='./src/assets/icons/icon-search.svg'
+          src={iconSearch}
           alt='icon-search'
           className='h6 w-6 cursor-pointer'
           onClick={() => setIsOpen(!isOpen)}
@@ -46,14 +48,14 @@ const SearchBar: React.FC = () => {
             <div className='h-full w-full bg-black'>
               <div className='h-16 px-4 py-[10px] gap-[10px] flex flex-row items-center justify-between'>
                 <img
-                  src='./src/assets/icons/icon-left-arrow.svg'
+                  src={leftArrow}
                   alt='left-arrow'
                   className='h-6 w-6 cursor-pointer'
                   onClick={() => setIsOpen(false)}
                 />
                 <div className='h-full w-full max-w-full py-2 px-4 gap-4 backdrop-blur-3xl flex items-center justify-between border border-[#252B37] rounded-[12px]'>
                   <img
-                    src='./src/assets/icons/icon-search.svg'
+                    src={iconSearch}
                     alt='icon-search'
                     className='h-6 w-6 cursor-pointer'
                     onClick={handleSearch}
@@ -78,7 +80,7 @@ const SearchBar: React.FC = () => {
   return (
     <div className='h-full w-full max-w-[243px] py-2 px-4 gap-4 backdrop-blur-3xl flex items-center justify-between border bg-[#0A0D1299] border-[#252B37] rounded-[12px]'>
       <img
-        src='./src/assets/icons/icon-search.svg'
+        src={iconSearch}
         alt='icon-search'
         className='h-6 w-6 cursor-pointer'
         onClick={handleSearch}

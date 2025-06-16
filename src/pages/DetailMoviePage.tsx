@@ -9,6 +9,7 @@ import iconVidCamera from '../assets/icons/icon-vidcamera.svg';
 import iconEmojiHappy from '../assets/icons/icon-emoji-happy.svg';
 import iconCalendar from '../assets/icons/icon-calendar.svg';
 import HeartIcon from '../components/ui/HeartIcon';
+import bgWhite from '../assets/icons/bg-white.jpg';
 
 const DetailMoviePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -66,7 +67,11 @@ const DetailMoviePage: React.FC = () => {
       {/* Hero Section */}
       <div className='max-h-[810px] overflow-hidden min-h-[450px] md:min-h-[790px]'>
         <img
-          src={getImageUrl(movieDetails.backdrop_path)}
+          src={
+            movieDetails.backdrop_path
+              ? getImageUrl(movieDetails.backdrop_path)
+              : bgWhite
+          }
           alt={movieDetails.title}
           className='w-full h-full object-cover min-h-[400px] md:min-h-[790px]'
           loading='lazy'
@@ -78,7 +83,11 @@ const DetailMoviePage: React.FC = () => {
       <div className='absolute px-4 top-[200px] md:top-[400px] md:left-[125px] md:mr-[160px] w-full md:max-w-[calc(100vw-260px)] gap-6 md:gap-0'>
         <div className='flex flex-row gap-8'>
           <img
-            src={getImageUrl(movieDetails.poster_path)}
+            src={
+              movieDetails.poster_path
+                ? getImageUrl(movieDetails.poster_path)
+                : bgWhite
+            }
             alt={movieDetails.title}
             className='rounded-[12px] max-h-[171px] md:max-h-[384px] h-fit w-fit'
             loading='lazy'
@@ -112,7 +121,7 @@ const DetailMoviePage: React.FC = () => {
                     className='my-5 flex flex-col gap-2 items-center justify-center rounded-[16px] bg-black border border-[#252B37] p-5 w-full'
                   >
                     <img
-                      src={item.path}
+                      src={item.path ? item.path : bgWhite}
                       alt={item.label}
                       className='h-[15px] w-[15px] md:h-6 md:w-6'
                       loading='lazy'
@@ -145,7 +154,7 @@ const DetailMoviePage: React.FC = () => {
                 className='flex flex-col gap-2 items-center justify-center rounded-[16px] bg-black border border-[#252B37] p-4'
               >
                 <img
-                  src={item.path}
+                  src={item.path ? item.path : bgWhite}
                   alt={item.label}
                   className='h-6 w-6'
                   loading='lazy'
@@ -183,7 +192,11 @@ const DetailMoviePage: React.FC = () => {
             {topCast.map((person) => (
               <div key={person.id} className='flex gap-3 md:gap-4'>
                 <img
-                  src={getImageUrl(person.profile_path)}
+                  src={
+                    person.profile_path
+                      ? getImageUrl(person.profile_path)
+                      : bgWhite
+                  }
                   alt={person.name}
                   className='rounded-[8px] max-h-[84px] md:max-h-[104px] w-fit'
                   loading='lazy'
