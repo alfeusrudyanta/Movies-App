@@ -93,7 +93,7 @@ const HomePage: React.FC = () => {
     <div className='flex flex-col'>
       {/* Featured Movie Section */}
       <div className='relative'>
-        <div className='max-h-[810px] overflow-hidden min-h-[450px] md:min-h-[530px]'>
+        <div className='max-h-[810px] overflow-hidden min-h-[550px] md:min-h-[810px]'>
           <img
             src={
               featuredMovie.backdrop_path
@@ -101,7 +101,7 @@ const HomePage: React.FC = () => {
                 : bgWhite
             }
             alt={featuredMovie.title}
-            className='w-full h-full object-cover min-h-[400px] md:min-h-[610px]'
+            className='w-full h-full object-cover min-h-[550px] md:min-h-[810px]'
             loading='lazy'
           />
           <div className='absolute inset-0 bg-gradient-to-b from-black/0 to-black to-[103.21%]' />
@@ -111,7 +111,7 @@ const HomePage: React.FC = () => {
             <h1 className='font-bold text-[24px] md:text-[48px] leading-[36px] md:leading-[60px] text-[#FDFDFD]'>
               {featuredMovie.title}
             </h1>
-            <p className='font-normal text-[14px] md:text-[16px] leading-[28px] md:leading-[30px] text-[#A4A7AE]'>
+            <p className='font-normal text-[14px] md:text-[16px] leading-[28px] md:leading-[30px] text-[#A4A7AE] line-clamp-6 md:line-clamp-none'>
               {featuredMovie.overview}
             </p>
           </div>
@@ -125,14 +125,14 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Trending Movies Slider */}
-      <div className='flex flex-col my-10 md:mt-0 md:mb-10 mx-4 md:mx-0 gap-6 md:gap-10'>
-        <h2 className='md:mx-[140px] font-bold text-[24px] md:text-[36px] leading-[36px] md:leading-[48px] text-[#FDFDFD]'>
+      <div className='flex flex-col my-10 md:mt-0 md:mb-10 gap-6 md:gap-10'>
+        <h2 className='mx-4 md:mx-[140px] font-bold text-[24px] md:text-[36px] leading-[36px] md:leading-[48px] text-[#FDFDFD]'>
           Trending Now
         </h2>
-        <div className='relative px-4 md:px-[140px]'>
+        <div className='relative'>
           <div
             ref={trendingRef}
-            className='flex flex-row gap-4 md:gap-5 overflow-x-auto [scrollbar-width:none] px-4 md:px-0'
+            className='flex flex-row gap-4 md:gap-5 overflow-x-auto [scrollbar-width:none] px-4 md:px-[140px]'
           >
             {trendingMovies.results.map((movie, index) => (
               <div
@@ -140,13 +140,14 @@ const HomePage: React.FC = () => {
                 className='flex-shrink-0 min-w-[173px] md:min-w-[216px]'
                 onMouseEnter={() => handleMovieHover(index)}
               >
-                <MoviesCard movie={movie} variant='slider' />
+                <MoviesCard movie={movie} variant='slider' index={index} />
               </div>
             ))}
           </div>
 
           {showLeftArrow && (
             <>
+              <div className='hidden md:flex absolute left-0 top-1/2 transform -translate-y-1/2 md:h-full md:w-[140px] bg-gradient-to-l from-black/0 to-black to-[83.21%]' />
               <div className='flex absolute left-0 rounded-full' />
               <button
                 onClick={() => scrollTrending('left')}
@@ -164,6 +165,7 @@ const HomePage: React.FC = () => {
 
           {showRightArrow && (
             <>
+              <div className='hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2 md:h-full md:w-[140px] bg-gradient-to-r from-black/0 to-black to-[83.21%]' />
               <div className='flex absolute right-0 rounded-full' />
               <button
                 onClick={() => scrollTrending('right')}
@@ -187,9 +189,9 @@ const HomePage: React.FC = () => {
           New Release
         </h2>
         <div className='relative grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5'>
-          {displayedNewMovies.map((movie) => (
+          {displayedNewMovies.map((movie, index) => (
             <div key={movie.id}>
-              <MoviesCard movie={movie} variant='standard' />
+              <MoviesCard movie={movie} variant='standard' index={index} />
             </div>
           ))}
 

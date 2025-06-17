@@ -7,12 +7,14 @@ import bgWhite from '../assets/icons/bg-white.jpg';
 
 interface MoviesCardProps {
   movie: BaseMovie;
-  variant?: 'standard' | 'slider';
+  variant: 'standard' | 'slider';
+  index: number;
 }
 
 const MoviesCard: React.FC<MoviesCardProps> = ({
   movie,
   variant = 'standard',
+  index,
 }) => {
   if (variant === 'slider') {
     return (
@@ -29,6 +31,11 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
               className='w-full h-fit max-h-[266px] max-w-[173px] md:max-h-[321px] md:max-w-[216px] hover:scale-105 transition-transform duration-300'
               loading='lazy'
             />
+            <div className='absolute left-2 md:left-3 top-2 md:top-3 flex h-[32px] md:h-[48px] w-[32px] md:w-[48px] items-center justify-center rounded-full bg-[#0A0D1299] backdrop-blur-[34.29px]  '>
+              <p className='font-semibold text-[14px] md:text-[16px] leading-[28px] md:leading-[30px] text-[#FDFDFD]'>
+                {(index += 1)}
+              </p>
+            </div>
           </div>
           <div className='flex flex-col gap-[2px]'>
             <p className='font-semibold text-white text-sm '>{movie.title}</p>
