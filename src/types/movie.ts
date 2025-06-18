@@ -140,6 +140,7 @@ interface MovieCredits {
 }
 
 export type {
+  MovieVideo,
   MovieSearchResponse as MovieSearch,
   NowPlayingResponse as NewReleased,
   TrendingResponse as TrendingMovies,

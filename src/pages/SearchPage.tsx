@@ -87,14 +87,14 @@ const SearchPage: React.FC = () => {
                   </Link>
 
                   <div className='hidden md:block'>
-                    <Button variant='WatchTrailer' />
+                    <Button variant='WatchTrailer' movieId={movie.id} />{' '}
                   </div>
                 </div>
               </div>
 
               <div className='flex flex-row max-w-full w-full md:max-w-[56px] pt-4 gap-4'>
                 <div className='w-full max-w-full md:hidden'>
-                  <Button variant='WatchTrailer' />
+                  <Button variant='WatchTrailer' movieId={movie.id} />{' '}
                 </div>
                 <HeartIcon movieId={movie.id} initialLiked={false} />
               </div>

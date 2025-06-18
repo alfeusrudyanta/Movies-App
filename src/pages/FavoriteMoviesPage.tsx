@@ -106,7 +106,7 @@ const FavoriteMoviesPage: React.FC = () => {
                   </Link>
 
                   <div className='hidden md:block'>
-                    <Button variant='WatchTrailer' />
+                    <Button variant='WatchTrailer' movieId={movie.id} />
                   </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@ const FavoriteMoviesPage: React.FC = () => {
               {/* Mobile Item */}
               <div className='flex flex-row max-w-full w-full md:max-w-[56px] pt-4  gap-4'>
                 <div className='w-full max-w-full md:hidden '>
-                  <Button variant='WatchTrailer' />
+                  <Button variant='WatchTrailer' movieId={movie.id} />{' '}
                 </div>
                 <div onClick={() => refreshFavorites()}>
                   <HeartIcon movieId={movie.id} initialLiked={true} />

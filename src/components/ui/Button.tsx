@@ -1,11 +1,44 @@
 import React from 'react';
 import iconPlayButton from '../../assets/icons/icon-play-button.svg';
+import type { MovieVideo } from '../../types/movie';
+import { api } from '../../services/api';
 
 interface ButtonProps {
   variant: 'WatchTrailer' | 'Details' | 'Load' | 'Explore';
+  movieId?: number;
 }
 
-const Button: React.FC<ButtonProps> = ({ variant }) => {
+const Button: React.FC<ButtonProps> = ({ variant, movieId }) => {
+  const [trailerUrl, setTrailerUrl] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (variant === 'WatchTrailer' && movieId) {
+      setLoading(true);
+      api
+        .getMovieTrailer(movieId)
+        .then((response) => {
+          const trailers = response.results.filter(
+            (video: MovieVideo) =>
+              video.site === 'YouTube' &&
+              video.type === 'Trailer' &&
+              video.official
+          );
+          setTrailerUrl(
+            trailers.length > 0
+              ? `https://www.youtube.com/watch?v=${trailers[0].key}`
+              : null
+          );
+        })
+        .catch(() => setTrailerUrl(null))
+        .finally(() => setLoading(false));
+    }
+  }, [variant, movieId]);
+
+  if (variant === 'WatchTrailer' && !loading && !trailerUrl) {
+    return null;
+  }
+
   const getButton = () => {
     switch (variant) {
       case 'WatchTrailer':
@@ -25,16 +58,18 @@ const Button: React.FC<ButtonProps> = ({ variant }) => {
     switch (variant) {
       case 'WatchTrailer':
         return (
-          <a href='https://www.youtube.com/' target='_blank'>
+          <a href={trailerUrl || '#'} target='_blank' rel='noopener noreferrer'>
             <span className='flex flex-row justify-center items-center text-center gap-2'>
               <p className='font-semibold text-[14px] md:text-[16px] text-[#FDFDFD] leading-[28px] md:leading-[30px]'>
-                Watch Trailer
+                {loading ? 'Loading...' : 'Watch Trailer'}
               </p>
-              <img
-                src={iconPlayButton}
-                alt='icon-play-button'
-                className='h-[18px] w-[18px] md:h-6 md:w-6'
-              />
+              {!loading && (
+                <img
+                  src={iconPlayButton}
+                  alt='icon-play-button'
+                  className='h-[18px] w-[18px] md:h-6 md:w-6'
+                />
+              )}
             </span>
           </a>
         );

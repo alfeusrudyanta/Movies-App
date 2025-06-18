@@ -102,7 +102,7 @@ const DetailMoviePage: React.FC = () => {
             {/* Desktop Only Elements */}
             <div className='hidden md:flex flex-col gap-4'>
               <div className='flex flex-col md:flex-row gap-4 items-center'>
-                <Button variant='WatchTrailer' />
+                <Button variant='WatchTrailer' movieId={movieDetails.id} />{' '}
                 <HeartIcon movieId={movieDetails.id} />
               </div>
               <div className='flex flex-row w-full gap-4'>

@@ -111,7 +111,7 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           <div className='flex flex-col md:flex-row gap-4'>
-            <Button variant='WatchTrailer' />
+            <Button variant='WatchTrailer' movieId={featuredMovie.id} />{' '}
             <Link to={`/movie/${featuredMovie.id}`}>
               <Button variant='Details' />
             </Link>
