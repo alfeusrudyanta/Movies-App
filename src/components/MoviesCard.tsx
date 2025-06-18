@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import iconStar from '../assets/icons/icon-star.svg';
 import { getImageUrl } from '../utils/getImgUrl';
 import type { BaseMovie } from '../types/movie';
-import bgWhite from '../assets/icons/bg-white.jpg';
 
 interface MoviesCardProps {
   movie: BaseMovie;
@@ -22,11 +21,7 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
         <Link to={`/movie/${movie.id}`}>
           <div className='border border-transparent overflow-hidden rounded-[12px]'>
             <img
-              src={
-                getImageUrl(movie.poster_path)
-                  ? getImageUrl(movie.poster_path)
-                  : bgWhite
-              }
+              src={getImageUrl(movie.poster_path)}
               alt={movie.title}
               className='w-full h-fit max-h-[266px] max-w-[173px] md:max-h-[321px] md:max-w-[216px] hover:scale-105 transition-transform duration-300'
               loading='lazy'
@@ -57,7 +52,7 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
       <Link to={`/movie/${movie.id}`}>
         <div className='border border-transparent overflow-hidden rounded-[12px]'>
           <img
-            src={movie.poster_path ? getImageUrl(movie.poster_path) : bgWhite}
+            src={getImageUrl(movie.poster_path)}
             alt={movie.title}
             className='w-full h-fit hover:scale-105 transition-transform duration-300'
             loading='lazy'
