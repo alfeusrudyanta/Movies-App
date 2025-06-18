@@ -32,11 +32,18 @@ const MoviesCard: React.FC<MoviesCardProps> = ({
               </p>
             </div>
           </div>
-          <div className='flex flex-col gap-[2px]'>
-            <p className='font-semibold text-white text-sm '>{movie.title}</p>
+          <div className='flex flex-col gap-[2px] mt-2 max-w-[173px] md:max-w-[216px]'>
+            <p className='font-semibold text-[16px] md:text-[18px] leading-[30px] md:leading-[32px] text-[#FDFDFD] whitespace-nowrap overflow-hidden text-ellipsis'>
+              {movie.title}
+            </p>
             <div className='flex items-center gap-1'>
-              <img src={iconStar} alt='Rating' className='h-4 w-4' />
-              <p className='text-white text-xs'>
+              <img
+                src={iconStar}
+                alt='Rating'
+                className='h-[18px] w-[18px] md:h-5 md:w-5'
+                loading='lazy'
+              />
+              <p className='font-normal text-[14px] md:text-[16px] leading-[28px] md:leading-[30px] text-[#A4A7AE]'>
                 {movie.vote_average.toFixed(1)}/10
               </p>
             </div>
