@@ -37,13 +37,13 @@ const Header: React.FC<HeaderProps> = ({ NavItems }) => {
               alt='icon-tv'
               className='h-[28px] w-[28px] md:h-10 md:w-10'
             />
-            <p className='font-semibold text-[20px] md:text-[29px] leading-[25px] md:leading-[35.56px] text-center text-[#FDFDFD]'>
+            <p className='font-semibold text-[20px] md:text-[29px] leading-[25px] md:leading-[35.56px] text-center text-[#FDFDFD] text-shadow-[0_0_4px_black]'>
               Movie
             </p>
           </div>
         </Link>
 
-        <nav className='font-normal leading-[30px] text-[#FFFFFF] text-[16px] gap-12 mr-12 hidden md:flex'>
+        <nav className='font-normal leading-[30px] text-[#FFFFFF] text-shadow-[0_0_4px_black] text-[16px] gap-12 mr-12 hidden md:flex'>
           {NavItems.map((item: NavItem) => (
             <a key={item.label} href={item.path}>
               {item.label}
